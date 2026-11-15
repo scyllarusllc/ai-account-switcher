@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Local Profile Switcher · Chrome</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script>
+</head>
+<body>
+<!--#header-->
+<main>
+  <div class="heading"><div><p class="eyebrow">BROWSER WORKSPACES</p><h1>每个身份，一个独立空间。</h1><p class="subtitle">为不同账号保存浏览器目录、代理与启动偏好，随时打开。</p></div><button id="new" class="primary">＋ 新建配置</button></div>
+  <section class="health" aria-label="环境状态"><span id="health-dot" class="dot"></span><div><strong id="health-title">正在连接本地服务…</strong><p id="binary">检测 Chrome 安装路径</p></div><span class="tag">仅本机访问</span></section>
+  <div class="toolbar"><h2>浏览器配置 <span id="count" class="count">0</span></h2><label class="search"><span class="sr-only">搜索配置</span><input id="search" type="search" placeholder="搜索名称、目录或代理…"></label></div>
+  <div class="workspace"><section aria-label="已保存的配置"><div class="table-scroll"><table class="profile-table"><thead><tr><th>配置</th><th>用户数据目录</th><th>网络</th><th>创建时间</th><th>更新时间</th><th>操作</th></tr></thead><tbody id="profiles"></tbody></table></div><div id="empty" class="empty" hidden><span>◉</span><h3>从一个新空间开始</h3><p>创建配置，或调整搜索条件。</p><button id="empty-new">＋ 新建配置</button></div></section>
+  <aside><section class="panel"><div class="section-head"><h2>最近启动</h2><span class="subtle">本次服务会话</span></div><div id="events"><p class="muted">还没有启动记录</p></div></section><section class="note"><span class="note-symbol">↗</span><h3>让账号与网络各就各位</h3><p>不同代理请使用不同的用户数据目录。第一次打开后，在 Chrome 中登录对应的 Google 账号。</p><p>修改代理或启动参数后，请先完全退出该目录对应的 Chrome，再重新启动。</p><small>启动记录表示请求已发送，不代表浏览器正在运行。</small></section></aside></div>
+  <!--#footer-->
+</main>
+<div id="toast" role="status" aria-live="polite" hidden></div>
+<dialog id="editor"><form id="profile-form"><div class="dialog-head"><div><p class="eyebrow">PROFILE SETTINGS</p><h2 id="editor-title">新建配置</h2></div><button type="button" class="icon-button" id="close-editor" aria-label="关闭">×</button></div>
+<div class="form-grid"><label>配置名称<input name="name" required maxlength="64" pattern="[a-zA-Z0-9_\-\u0080-\uFFFF]+" placeholder="例如 work"></label><label>Profile 子目录<input name="profile_directory" placeholder="Default"></label><label class="full">用户数据目录 <span class="required">必填</span><input name="user_data_dir" required placeholder="~/Library/Application Support/ChromeProfileSwitcher/work"><small>Chrome 数据根目录，支持 ~；不要直接填写 Profile 子目录。</small></label><label class="full">代理地址<input name="proxy" placeholder="http://127.0.0.1:7890 或 socks5://127.0.0.1:1080"><small>留空使用系统默认；填写后需确保代理服务已启动。</small></label><label class="full">代理绕过规则<input name="proxy_bypass_list" placeholder="localhost;127.0.0.1"></label><label class="full">启动网页<textarea name="urls" rows="2" placeholder="https://www.google.com&#10;https://mail.google.com"></textarea><small>每行一个 http:// 或 https:// 地址。</small></label><label class="full">额外启动参数<textarea name="args" rows="3" placeholder="--no-first-run&#10;--incognito"></textarea><small>每行一个完整参数，不需要额外引号。</small></label></div><p id="form-error" role="alert"></p><div class="dialog-actions"><button type="button" id="cancel-editor">取消</button><button type="submit" class="primary" id="save">保存配置</button></div></form></dialog>
+<dialog id="preview"><div class="dialog-head"><div><p class="eyebrow">LAUNCH PREVIEW</p><h2>启动参数</h2></div><button id="close-preview" class="icon-button" aria-label="关闭">×</button></div><p class="muted">以下为传递给 Chrome 的参数列表，尚未启动浏览器。</p><pre id="command"></pre><div class="dialog-actions"><button id="copy">复制参数</button></div></dialog>
+<dialog id="delete-dialog"><div class="dialog-head"><h2>移除配置？</h2></div><p id="delete-description"></p><p class="muted">只移除本工具中的配置，Chrome 账号、书签和数据目录都会保留。</p><div class="dialog-actions"><button id="cancel-delete">取消</button><button id="confirm-delete" class="danger">移除配置</button></div></dialog>
+</body></html>

@@ -1,0 +1,26 @@
+{
+  "profiles": {
+    "personal": {
+      "user_data_dir": "~/Library/Application Support/ChromeProfileSwitcher/personal",
+      "profile_directory": "Default",
+      "args": [
+        "--no-first-run"
+      ],
+      "urls": [
+        "https://www.google.com"
+      ]
+    },
+    "work": {
+      "user_data_dir": "~/Library/Application Support/ChromeProfileSwitcher/work",
+      "profile_directory": "Default",
+      "proxy": "http://127.0.0.1:7890",
+      "proxy_bypass_list": "localhost;127.0.0.1",
+      "args": [
+        "--no-first-run"
+      ],
+      "urls": [
+        "https://www.google.com"
+      ]
+    }
+  }
+}

@@ -1,0 +1,6 @@
+profiles.db
+profiles.db-shm
+profiles.db-wal
+profiles.json
+__pycache__/
+.DS_Store
