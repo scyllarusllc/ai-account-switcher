@@ -1,11 +1,14 @@
-# Local Profile Switcher
+# AI Account Switcher — Multi-Account Manager & Usage Monitor
 
-一个仅在本机运行的网站，统一管理 Chrome 配置和 Codex 认证档案。无需第三方 Python 依赖。
+Local dashboard for switching Codex accounts, tracking remaining usage and reset times, and managing Chrome profiles.
+
+AI Account Switcher 是一个面向多 AI 账号管理的本地控制台。目前已支持 Codex 认证切换、剩余额度监控，以及 Chrome 配置和代理管理。其他 AI 服务的认证与用量接入属于后续扩展方向。无需第三方 Python 依赖。
 
 ## 启动
 
 ```sh
-cd ~/github/local-profile-switcher
+git clone https://github.com/scyllarusllc/ai-account-switcher.git
+cd ai-account-switcher
 make dev
 ```
 

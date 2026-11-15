@@ -1,8 +1,8 @@
 {
-  "name": "local-profile-switcher",
+  "name": "ai-account-switcher",
   "version": "0.1.0",
   "private": true,
-  "description": "Local web dashboard for Chrome profiles and Codex authentication",
+  "description": "Local dashboard for Codex account switching, remaining usage monitoring, and Chrome profile management",
   "scripts": {
     "dev": "python3 server.py",
     "start": "python3 server.py",
