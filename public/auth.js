@@ -161,4 +161,13 @@ $('close-delete').onclick=$('cancel-delete').onclick=()=>$('delete-dialog').clos
 $('confirm-delete').onclick=async()=>{const button=$('confirm-delete');button.disabled=true;try{const r=await api('delete',deleting);$('delete-dialog').close();toast(r.message);await refresh();}catch(error){toast(error.message,true);}finally{button.disabled=false;}};
 $('restore').onclick=async()=>{$('restore').disabled=true;try{const r=await api('restore');toast(r.message);await refresh();await loadUsage(true);}catch(error){toast(error.message,true);$('restore').disabled=false;}};
 refresh().then(()=>loadUsage()).catch(e=>{$('status-title').textContent='本地服务连接失败';$('status-detail').textContent=e.message;$('status-dot').className='dot warn';toast(e.message,true);});
-usageTimer=setInterval(()=>loadUsage(),60000);
+let automaticRefreshRunning = false;
+usageTimer = setInterval(async () => {
+  if (automaticRefreshRunning || !state) return;
+  automaticRefreshRunning = true;
+  try {
+    await Promise.all([loadUsage(), loadProfileUsages()]);
+  } finally {
+    automaticRefreshRunning = false;
+  }
+}, 60000);

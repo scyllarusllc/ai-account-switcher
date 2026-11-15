@@ -6,6 +6,8 @@ AI Account Switcher 是一个面向多 AI 账号管理的本地控制台。目�
 
 ## 启动
 
+开发启动需要 Python 3.10+、Node.js 和 npm。`make dev` 首次运行或依赖清单更新时，会按锁文件安装 Tailwind CSS 等前端开发依赖，再启动本地服务。只运行现有页面时可使用 `make start`。
+
 ```sh
 git clone https://github.com/scyllarusllc/ai-account-switcher.git
 cd ai-account-switcher
@@ -49,7 +51,7 @@ make dev
 
 用量查询需要本机安装 Codex CLI，并确保服务进程可以执行 `codex`。可通过环境变量 `CODEX_BIN` 指定可执行文件路径。
 
-后端通过 Codex App Server 查询每个认证档案的用量。页面显示 5 小时及周窗口的剩余百分比、剩余额度条、重置倒计时和可用重置次数。当前账号的用量每分钟刷新，表格在页面加载或点击「刷新」时查询。认证失效时会提示重新登录并更新备份。
+后端通过 Codex App Server 查询每个认证档案的用量。页面显示 5 小时及周窗口的剩余百分比、剩余额度条、重置倒计时和可用重置次数。当前账号和认证档案表格的用量每分钟自动刷新，表格也会在页面加载或点击「刷新」时查询。认证失效时会提示重新登录并更新备份。
 
 可用重置详情包含服务端提供的领取、到期时间。当前接口没有提供过去 30 天完整的领取与使用历史。
 

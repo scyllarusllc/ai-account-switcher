@@ -7,5 +7,8 @@
     "dev": "python3 server.py",
     "start": "python3 server.py",
     "test": "python3 -m unittest -v"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.17"
   }
 }
